@@ -36,10 +36,10 @@ export default function PokemonList() {
     const response = await fetch(URL);
     const data = await response.json();
 
-    const promises = data.results.map((pokemon) => pokemon);
-    // const promises = data.results.map(
-    //   async (pokemon) => (await fetchPokemon(pokemon.name)).data
-    // );
+    // const promises = data.results.map((pokemon) => pokemon);
+    const promises = data.results.map(
+      async (pokemon) => (await fetchPokemon(pokemon.name)).data
+    );
 
     const pokemonList = Promise.all(promises);
     
